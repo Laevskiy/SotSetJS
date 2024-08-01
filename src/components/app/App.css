@@ -1,0 +1,33 @@
+.App {
+  display: grid;
+  grid-template-areas:
+    "h h"
+    "b os"
+    "p p";
+  color: blue;
+  grid-template-rows: 15% 70% 15%;
+  grid-template-columns: 25% 75% ;
+  grid-gap: 5px;
+  height: 100vh;
+  margin: 0;
+
+}
+
+.Head {
+  grid-area:h;
+  background: aqua;
+}
+
+.NavBar {
+  grid-area:b;
+  background: aqua;
+  text-align: center;
+}
+.osn {
+  grid-area:os;
+  background: aqua;
+}
+.podval {
+  grid-area:p;
+  background: aqua;
+}
