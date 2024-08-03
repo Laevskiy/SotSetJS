@@ -1,13 +1,17 @@
 import "./NavBar.css"
+import {NavLink} from "react-router-dom";
 
 const NavBar = (props) =>{
 
     let butns = props.buttens.map((butten) => {
         return (
-            <div>
-                <h2>{butten.name}</h2>
+            <div className={'butall'}>
+                <NavLink to={butten.url}
+                     className={"butns"}
+                     style={({isActive}) => ({color: isActive ? "white":"black" }) }
+                     >{butten.name}
+                </NavLink>
             </div>
-
         )
     })
 
