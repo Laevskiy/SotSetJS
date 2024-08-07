@@ -14,8 +14,11 @@ const News = (props) =>{
                    //onChange={(e)=>console.log(e.target.value)}
                    onChange={(e) => props.redoinfText(e.target.value)}
             />
+            <div>
+                <button onClick={props.addNews}>Добавить новость</button>
+            </div>
 
-            <button onClick={props.addNews}>Добавить новость</button>
+
         </div>
     )
 }
