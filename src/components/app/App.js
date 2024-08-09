@@ -19,13 +19,14 @@ function App(props) {
       <div className="App">
 
           <div className="Head">Шапка</div>
-          <div className="NavBar"><NavBar buttens ={props.store.getButten()}/></div>
+          <div className="NavBar"><NavBar state = {props.store.getState().sidebar} /></div>
           <div className="osn">
               <Routes>
-                  <Route path ='dialogs' element={<Dialogs />}/>
-                  <Route path ='news' element={<News news = {props.store.getNew()} redoinfText = {props.store.redoingText} addNews={props.store.addNewNews} />}/>
-                  <Route path ='friends' element={<Friends store = {props.store} />}/>
-                  <Route path ='friendslist' element={<FriendsListContainer store = {props.store} />}/>
+                  {/*<Route path ='dialogs' element={<Dialogs />}/>*/}
+                  {/*<Route path ='news' element={<News news = {props.store.getNew()} redoinfText = {props.store.redoingText} addNews={props.store.addNewNews} />}/>*/}
+                  {/*<Route path ='friends' element={<Friends store = {props.store} />}/>*/}
+                  {/*<Route path ='friendslist' element={<FriendsListContainer store = {props.store} />}/>*/}
+                  {<Route path ='/' element={<div>Главная страница</div>}/>}
                </Routes>
           </div>
           <div className="podval">Подвал</div>
