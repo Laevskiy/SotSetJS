@@ -1,12 +1,13 @@
 import './App.css';
 import NavBar from "../navBar/NavBar";
 import {Routes, Route, Outlet, Link, BrowserRouter, NavLink} from "react-router-dom";
-import Dialogs from "../dialogs/Dialogs";
+
 import News from "../news/News";
 import store from "../../store/state";
 import Friends from "../friends/friends";
 import FriendsContainer from "../fraindsList/fraindsListContainer";
 import FriendsListContainer from "../fraindsList/fraindsListContainer";
+import DialogsContainer from "../dialogs/DialogsContainer";
 
 const buttens = [
     {id:1, name: "Диалоги", url:'dialogs'},
@@ -14,6 +15,7 @@ const buttens = [
 ]
 
 function App(props) {
+
   return (
       <BrowserRouter>
       <div className="App">
@@ -22,7 +24,7 @@ function App(props) {
           <div className="NavBar"><NavBar state = {props.store.getState().sidebar} /></div>
           <div className="osn">
               <Routes>
-                  {/*<Route path ='dialogs' element={<Dialogs />}/>*/}
+                  {<Route path ='dialogs' element={<DialogsContainer state ={props.store} />}/>}
                   {/*<Route path ='news' element={<News news = {props.store.getNew()} redoinfText = {props.store.redoingText} addNews={props.store.addNewNews} />}/>*/}
                   {/*<Route path ='friends' element={<Friends store = {props.store} />}/>*/}
                   {/*<Route path ='friendslist' element={<FriendsListContainer store = {props.store} />}/>*/}

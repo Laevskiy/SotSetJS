@@ -4,7 +4,7 @@ import dialogsReducer from "./dialogs_reducer";
 
 let reducers = combineReducers({
         sidebar: buttensReducer,
-        dialogpage: dialogsReducer
+        dialogsPage: dialogsReducer
 });
 
 let store = createStore(reducers);

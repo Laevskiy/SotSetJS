@@ -5,12 +5,17 @@ import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 //import store from "./store/state";
 import store from './redux/store';
+import {Provider} from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const RendMainPage = () =>{
     root.render(
+
         <React.StrictMode>
-            <App store={store} />
+            <Provider store={store}>
+                <App store={store}/>
+            </Provider>
+
         </React.StrictMode>
     );
 }

@@ -1,0 +1,8 @@
+.dialogItem{
+    background: cornflowerblue;
+}
+
+.dialogItem button{
+    font-size:18px;
+    text-decoration: none;
+}

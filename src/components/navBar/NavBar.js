@@ -2,7 +2,7 @@ import "./NavBar.css"
 import {NavLink} from "react-router-dom";
 
 const NavBar = (props) =>{
-     console.log(props.state.buttens)
+
 let butns = props.state.buttens.map((butten) => {
     return (
         <div className={'butall'}>
@@ -17,7 +17,6 @@ let butns = props.state.buttens.map((butten) => {
 
 return(
     <div className="NavBar">
-        <div>Тут будут кнопки</div>
         {butns}
     </div>
 )
