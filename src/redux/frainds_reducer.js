@@ -1,10 +1,13 @@
 const FR_FOLLOW = "FR_FOLLOW"
 const FR_UNFOLLOW = "FR_UNFOLLOW"
+const GET_FRIENDS = "GET_FRIENDS"
+
+
 let initialState = {
-    frainds:[ {id:1, name: "Алексей", follow:true},
-        {id:2, name: "Марго", follow:false},
-        {id:3, name: "Миша", follow:false},
-        {id:4, name: "Юрий", follow:true}]
+    frainds:[ {id:1, name: "Алексей", followed:true},
+        {id:2, name: "Марго", followed:false},
+        {id:3, name: "Миша", followed:false},
+        {id:4, name: "Юрий", followed:true}]
 }
 
 const fraindsReducer = (state = initialState, action) => {
@@ -14,7 +17,7 @@ const fraindsReducer = (state = initialState, action) => {
         newstate.frainds = [...state.frainds]
         newstate.frainds.map((item) =>{
             if (item.id == id){
-                item.follow = !item.follow
+                item.followed = !item.followed
                 return item
             }else{
                 return item
@@ -30,7 +33,7 @@ const fraindsReducer = (state = initialState, action) => {
             newstate.frainds = [...state.frainds]
             newstate.frainds.map((item) =>{
                 if (item.id == action.id){
-                    item.follow = true
+                    item.followed = true
                     return item
                 }else{
                     return item
@@ -43,6 +46,13 @@ const fraindsReducer = (state = initialState, action) => {
         case FR_UNFOLLOW:
             console.log("Вы больше НЕ друзья с "+action.id)
             return changTR(state,action.id)
+
+        case GET_FRIENDS:
+            console.log(action.frainds)
+            let stateNew = {...state}
+                stateNew.frainds = [...state.frainds,...action.frainds]
+            console.log(stateNew.frainds)
+            return stateNew
         default:
             return state
     }
@@ -56,5 +66,8 @@ export const unfollowFraindsAC = (id) =>{
     return {type:FR_UNFOLLOW, id:id}
 }
 
+export const getFraindsAC = (frainds) =>{
+    return {type:GET_FRIENDS, frainds:frainds}
+}
 
 export default fraindsReducer

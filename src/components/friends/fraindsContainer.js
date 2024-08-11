@@ -1,7 +1,8 @@
 
 import Frainds from "./frainds";
 import {connect} from "react-redux";
-import {followFraindsAC, unfollowFraindsAC} from "../../redux/frainds_reducer";
+import {followFraindsAC, getFraindsAC, unfollowFraindsAC} from "../../redux/frainds_reducer";
+import FraindsClass from "./fraindsClass";
 
 
 
@@ -18,11 +19,15 @@ let mapDispatchToProps = (dispatch) =>{
         },
         unfollow: (id) =>{
             dispatch(unfollowFraindsAC(id))
+        },
+        getFrainds:(frainds) =>{
+            dispatch(getFraindsAC(frainds))
         }
+
 
     }
 }
-const FraindsContainer = connect(mapStateToProps,mapDispatchToProps)(Frainds)
+const FraindsContainer = connect(mapStateToProps,mapDispatchToProps)(FraindsClass)
 
 
 export default FraindsContainer

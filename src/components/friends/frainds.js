@@ -6,7 +6,7 @@ const Frainds = (props) =>{
             <div className={"frainds"}>
                 <h3>{fraind.name}</h3>
                 <div>
-                    {fraind.follow ? <button onClick={()=>props.unfollow(fraind.id)}>unFollow</button> : <button onClick={()=>props.follow(fraind.id)}>Follow</button>}
+                    {fraind.followed ? <button onClick={()=>props.unfollow(fraind.id)}>unFollow</button> : <button onClick={()=>props.follow(fraind.id)}>Follow</button>}
                 </div>
             </div>
 
