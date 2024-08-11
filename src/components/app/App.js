@@ -4,10 +4,10 @@ import {Routes, Route, Outlet, Link, BrowserRouter, NavLink} from "react-router-
 
 import News from "../news/News";
 import store from "../../store/state";
-import Friends from "../friends/friends";
-import FriendsContainer from "../fraindsList/fraindsListContainer";
-import FriendsListContainer from "../fraindsList/fraindsListContainer";
+
 import DialogsContainer from "../dialogs/DialogsContainer";
+import Friends from "../friends/frainds";
+import FraindsContainer from "../friends/fraindsContainer";
 
 const buttens = [
     {id:1, name: "Диалоги", url:'dialogs'},
@@ -25,6 +25,7 @@ function App(props) {
           <div className="osn">
               <Routes>
                   {<Route path ='dialogs' element={<DialogsContainer state ={props.store} />}/>}
+                  {<Route path ='friends' element={<FraindsContainer/>}/>}
                   {/*<Route path ='news' element={<News news = {props.store.getNew()} redoinfText = {props.store.redoingText} addNews={props.store.addNewNews} />}/>*/}
                   {/*<Route path ='friends' element={<Friends store = {props.store} />}/>*/}
                   {/*<Route path ='friendslist' element={<FriendsListContainer store = {props.store} />}/>*/}

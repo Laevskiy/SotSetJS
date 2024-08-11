@@ -1,8 +1,10 @@
 .dialogItem{
     background: cornflowerblue;
+    height: 65px;
+    margin: 2px;
 }
 
 .dialogItem button{
-    font-size:18px;
+    font-size:12px;
     text-decoration: none;
 }

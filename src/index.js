@@ -19,9 +19,11 @@ const RendMainPage = () =>{
         </React.StrictMode>
     );
 }
-
+RendMainPage();
 //store.PaindMainPage(RendMainPage)
-store.subscribe(RendMainPage)
-RendMainPage()
+// store.subscribe(()=>{
+//     RendMainPage()
+// })
+
 
 reportWebVitals();
