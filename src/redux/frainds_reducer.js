@@ -1,13 +1,19 @@
 const FR_FOLLOW = "FR_FOLLOW"
 const FR_UNFOLLOW = "FR_UNFOLLOW"
 const GET_FRIENDS = "GET_FRIENDS"
+const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE"
+const CHANGE_LOADING = "CHANGE_LOADING"
 
 
 let initialState = {
     frainds:[ {id:1, name: "Алексей", followed:true},
         {id:2, name: "Марго", followed:false},
         {id:3, name: "Миша", followed:false},
-        {id:4, name: "Юрий", followed:true}]
+        {id:4, name: "Юрий", followed:true}],
+    currentPage:1,
+    maxPage: 8,
+    loading:false
+
 }
 
 const fraindsReducer = (state = initialState, action) => {
@@ -43,16 +49,25 @@ const fraindsReducer = (state = initialState, action) => {
             console.log("Теперь вы друзья с "+action.id)
             console.log(newstate)
             return newstate
+
         case FR_UNFOLLOW:
-            console.log("Вы больше НЕ друзья с "+action.id)
             return changTR(state,action.id)
 
         case GET_FRIENDS:
-            console.log(action.frainds)
+
             let stateNew = {...state}
-                stateNew.frainds = [...state.frainds,...action.frainds]
-            console.log(stateNew.frainds)
+                stateNew.frainds = [...action.frainds]
             return stateNew
+
+        case CHANGE_CURRENT_PAGE:
+            let pgState = {...state,currentPage: action.page}
+            return pgState
+
+        case CHANGE_LOADING:
+           let loadstate = {...state,loading:!state.loading}
+            console.log(loadstate.loading)
+           return loadstate
+
         default:
             return state
     }
@@ -69,5 +84,14 @@ export const unfollowFraindsAC = (id) =>{
 export const getFraindsAC = (frainds) =>{
     return {type:GET_FRIENDS, frainds:frainds}
 }
+
+export const changeCurrentPageAC = (page) =>{
+    return {type:CHANGE_CURRENT_PAGE, page:page}
+}
+
+export const changeLoadingAC = () =>{
+    return {type:CHANGE_LOADING}
+}
+
 
 export default fraindsReducer
