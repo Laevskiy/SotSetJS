@@ -1,11 +1,13 @@
 import {Component} from "react";
 import axios from "axios";
 import Loading from "../loading/loading";
+import {NavLink} from "react-router-dom";
 
 
 class FraindsClass extends Component {
 
     componentDidMount() {
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`).
         then(res => {
             this.props.changeLoading()
@@ -40,8 +42,10 @@ class FraindsClass extends Component {
                     })}
                 </div>
                 {this.props.frainds.map((fraind)=>{
-                    return <div className={"fraind"}>
-
+                    return <div className={"friend"}>
+                        <NavLink to={'/profile/'+ fraind.id}>
+                        <img className={"fraindimg"} src="https://www.youregypttours.com/storage/User_font_awesome.svg-1652016814.png"/>
+                        </NavLink>
                         <h3>{fraind.name}</h3>
                         <div>
                             {fraind.followed ? <button onClick={() => this.props.unfollow(fraind.id)}>unFollow</button> :

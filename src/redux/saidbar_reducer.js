@@ -5,7 +5,9 @@ let initialState = {
     buttens:[ {id:1, name: "Диалоги", url:'dialogs'},
             {id:2, name: "Новости", url:'news'},
             {id:3, name: "Друзья", url:'friends'},
-            {id:4, name: "Список друзей", url:'friendslist'}]
+            {id:4, name: "Список друзей", url:'friendslist'},
+            {id:5, name: "Профиль", url:'profile'}
+    ]
     }
 
 const buttensReducer = (state=initialState,action) =>{

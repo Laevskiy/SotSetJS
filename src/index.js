@@ -11,12 +11,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const RendMainPage = () =>{
     root.render(
 
-        <React.StrictMode>
+       // <React.StrictMode>
             <Provider store={store}>
                 <App store={store}/>
             </Provider>
 
-        </React.StrictMode>
+        //</React.StrictMode>
     );
 }
 RendMainPage();

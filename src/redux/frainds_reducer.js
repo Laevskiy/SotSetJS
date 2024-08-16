@@ -12,7 +12,7 @@ let initialState = {
         {id:4, name: "Юрий", followed:true}],
     currentPage:1,
     maxPage: 8,
-    loading:false
+    loading:true
 
 }
 
@@ -47,7 +47,7 @@ const fraindsReducer = (state = initialState, action) => {
 
             })
             console.log("Теперь вы друзья с "+action.id)
-            console.log(newstate)
+
             return newstate
 
         case FR_UNFOLLOW:
@@ -65,7 +65,7 @@ const fraindsReducer = (state = initialState, action) => {
 
         case CHANGE_LOADING:
            let loadstate = {...state,loading:!state.loading}
-            console.log(loadstate.loading)
+
            return loadstate
 
         default:
