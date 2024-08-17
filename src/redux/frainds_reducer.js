@@ -12,7 +12,7 @@ let initialState = {
         {id:4, name: "Юрий", followed:true}],
     currentPage:1,
     maxPage: 8,
-    loading:true
+    loading:false
 
 }
 

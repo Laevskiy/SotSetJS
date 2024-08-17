@@ -1,14 +1,14 @@
-.frainds{
-    background: cornflowerblue;
-    margin: 5px;
-
-}
-
 .fraindimg{
-    width: 5%;
+    width: 3%;
 }
 
 .action{
     background: red;
 }
 
+
+.friend{
+    background: chartreuse;
+    margin: 2px;
+    height: 10%
+}

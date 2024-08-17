@@ -2,13 +2,17 @@ import {Component} from "react";
 import axios from "axios";
 import Loading from "../loading/loading";
 import {NavLink} from "react-router-dom";
+import './frainds.css'
+import {getUsers} from "../../api/api";
 
 
 class FraindsClass extends Component {
 
     componentDidMount() {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`).
+        this.props.changeLoading()
+        //axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`,
+            //{withCredentials: true}).
+        getUsers(this.props.currentPage).
         then(res => {
             this.props.changeLoading()
              this.props.getFrainds(res.data.items)
@@ -18,12 +22,42 @@ class FraindsClass extends Component {
    onChangePage = (page)=>{
        this.props.changeCurrentPage(page)
        this.props.changeLoading()
-       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${4}`).then(res => {
+       getUsers(page).then(res => {
            this.props.changeLoading()
            this.props.getFrainds(res.data.items)
        })
 
    }
+
+   serverFollow = (id) =>{
+       axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{},
+           { withCredentials: true,
+                    headers: {"API-KEY":"3a6c91f3-20a3-4e43-a773-5e4856b6062d"}
+           }).
+       then(res => {
+            if(res.data.resultCode == 0){
+                console.log("Положительный ответ от сервера ")
+                this.props.follow(id)
+
+            }
+
+       })
+   }
+
+    serverUnFollow = (id) =>{
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,
+            { withCredentials: true,
+                headers: {"API-KEY":"3a6c91f3-20a3-4e43-a773-5e4856b6062d"}
+            }).
+        then(res => {
+            if(res.data.resultCode == 0){
+                console.log("Положительный ответ от сервера ")
+                this.props.unfollow(id)
+
+            }
+
+        })
+    }
 
     render(){
 
@@ -48,8 +82,11 @@ class FraindsClass extends Component {
                         </NavLink>
                         <h3>{fraind.name}</h3>
                         <div>
-                            {fraind.followed ? <button onClick={() => this.props.unfollow(fraind.id)}>unFollow</button> :
-                                <button onClick={() => this.props.follow(fraind.id)}>Follow</button>}
+                            {fraind.followed ?
+                                //<button onClick={() => this.props.unfollow(fraind.id)}>unFollow</button> :
+                                <button onClick={() => this.serverUnFollow(fraind.id)}>unFollow</button> :
+                                //<button onClick={() => this.props.follow(fraind.id)}>Follow</button>}
+                                <button onClick={() => this.serverFollow(fraind.id)}>Follow</button>}
                         </div>
                     </div>
                 })}
