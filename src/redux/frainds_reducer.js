@@ -3,6 +3,7 @@ const FR_UNFOLLOW = "FR_UNFOLLOW"
 const GET_FRIENDS = "GET_FRIENDS"
 const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE"
 const CHANGE_LOADING = "CHANGE_LOADING"
+const FOLLOW_UNFOLLOW = "FOLLOW_UNFOLLOW"
 
 
 let initialState = {
@@ -12,7 +13,8 @@ let initialState = {
         {id:4, name: "Юрий", followed:true}],
     currentPage:1,
     maxPage: 8,
-    loading:false
+    loading:false,
+    changeListUser:[]
 
 }
 
@@ -68,6 +70,17 @@ const fraindsReducer = (state = initialState, action) => {
 
            return loadstate
 
+        case FOLLOW_UNFOLLOW:
+            if(action.status){
+                let newUsstate = {...state}
+                    newUsstate.changeListUser = [...state.changeListUser,action.userId]
+                return newUsstate
+            } else{
+                let newUsstate = {...state}
+                newUsstate.changeListUser = [...state.changeListUser.filter(id => id != action.userId)]
+                return newUsstate
+            }
+
         default:
             return state
     }
@@ -93,5 +106,8 @@ export const changeLoadingAC = () =>{
     return {type:CHANGE_LOADING}
 }
 
+export const followUnFollowAC = (status,userId) =>{
+    return {type:FOLLOW_UNFOLLOW, status:status,userId:userId}
+}
 
 export default fraindsReducer

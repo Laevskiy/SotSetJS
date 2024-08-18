@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {
     changeCurrentPageAC,
     changeLoadingAC,
-    followFraindsAC,
+    followFraindsAC, followUnFollowAC,
     getFraindsAC,
     unfollowFraindsAC
 } from "../../redux/frainds_reducer";
@@ -18,6 +18,7 @@ let mapStateToProps = (state) =>{
         currentPage:state.fraindsPage.currentPage,
         maxPage: state.fraindsPage.maxPage,
         loading:state.fraindsPage.loading,
+        changeListUser:state.fraindsPage.changeListUser,
     }
 };
 
@@ -37,6 +38,9 @@ let mapDispatchToProps = (dispatch) =>{
         },
         changeLoading: ()=>{
             dispatch(changeLoadingAC())
+        },
+        followUnFollow:(status,userid)=>{
+            dispatch(followUnFollowAC(status,userid))
         }
 
 

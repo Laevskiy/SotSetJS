@@ -10,6 +10,7 @@ class FraindsClass extends Component {
 
     componentDidMount() {
         this.props.changeLoading()
+        console.log(this.props.changeListUser)
         //axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`,
             //{withCredentials: true}).
         getUsers(this.props.currentPage).
@@ -30,6 +31,7 @@ class FraindsClass extends Component {
    }
 
    serverFollow = (id) =>{
+       this.props.followUnFollow(true,id)
        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{},
            { withCredentials: true,
                     headers: {"API-KEY":"3a6c91f3-20a3-4e43-a773-5e4856b6062d"}
@@ -40,11 +42,13 @@ class FraindsClass extends Component {
                 this.props.follow(id)
 
             }
+           this.props.followUnFollow(false,id)
 
        })
    }
 
     serverUnFollow = (id) =>{
+        this.props.followUnFollow(true,id)
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,
             { withCredentials: true,
                 headers: {"API-KEY":"3a6c91f3-20a3-4e43-a773-5e4856b6062d"}
@@ -55,7 +59,7 @@ class FraindsClass extends Component {
                 this.props.unfollow(id)
 
             }
-
+            this.props.followUnFollow(false,id)
         })
     }
 
@@ -84,9 +88,9 @@ class FraindsClass extends Component {
                         <div>
                             {fraind.followed ?
                                 //<button onClick={() => this.props.unfollow(fraind.id)}>unFollow</button> :
-                                <button onClick={() => this.serverUnFollow(fraind.id)}>unFollow</button> :
+                                <button disabled={this.props.changeListUser.some(id =>id === fraind.id)} onClick={() => this.serverUnFollow(fraind.id)}>unFollow</button> :
                                 //<button onClick={() => this.props.follow(fraind.id)}>Follow</button>}
-                                <button onClick={() => this.serverFollow(fraind.id)}>Follow</button>}
+                                <button disabled={this.props.changeListUser.some(id =>id === fraind.id)} onClick={() => this.serverFollow(fraind.id)}>Follow</button>}
                         </div>
                     </div>
                 })}
