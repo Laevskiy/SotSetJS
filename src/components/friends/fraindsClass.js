@@ -4,20 +4,22 @@ import Loading from "../loading/loading";
 import {NavLink} from "react-router-dom";
 import './frainds.css'
 import {getUsers} from "../../api/api";
+import {getUserThunk} from "../../redux/frainds_reducer";
 
 
 class FraindsClass extends Component {
 
     componentDidMount() {
-        this.props.changeLoading()
-        console.log(this.props.changeListUser)
-        //axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`,
-            //{withCredentials: true}).
-        getUsers(this.props.currentPage).
-        then(res => {
-            this.props.changeLoading()
-             this.props.getFrainds(res.data.items)
-        })
+        // this.props.changeLoading()
+        // console.log(this.props.changeListUser)
+        // //axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`,
+        //     //{withCredentials: true}).
+        // getUsers(this.props.currentPage).
+        // then(res => {
+        //     this.props.changeLoading()
+        //      this.props.getFrainds(res.data.items)
+        // })
+        this.props.getUserThunk(this.props.currentPage)
     }
 
    onChangePage = (page)=>{

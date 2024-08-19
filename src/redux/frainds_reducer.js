@@ -1,3 +1,5 @@
+import {getUsers} from "../api/api";
+
 const FR_FOLLOW = "FR_FOLLOW"
 const FR_UNFOLLOW = "FR_UNFOLLOW"
 const GET_FRIENDS = "GET_FRIENDS"
@@ -110,4 +112,19 @@ export const followUnFollowAC = (status,userId) =>{
     return {type:FOLLOW_UNFOLLOW, status:status,userId:userId}
 }
 
+
+// thunk
+
+export const getUserThunk =(currentPage) => {
+
+     return (dispatch)=>{
+
+    dispatch(changeLoadingAC())
+
+    getUsers(currentPage)
+        .then(res => {
+        dispatch(changeLoadingAC())
+        dispatch(getFraindsAC(res.data.items))
+    });}
+}
 export default fraindsReducer

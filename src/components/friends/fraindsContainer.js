@@ -5,7 +5,7 @@ import {
     changeCurrentPageAC,
     changeLoadingAC,
     followFraindsAC, followUnFollowAC,
-    getFraindsAC,
+    getFraindsAC, getUserThunk,
     unfollowFraindsAC
 } from "../../redux/frainds_reducer";
 import FraindsClass from "./fraindsClass";
@@ -41,7 +41,9 @@ let mapDispatchToProps = (dispatch) =>{
         },
         followUnFollow:(status,userid)=>{
             dispatch(followUnFollowAC(status,userid))
-        }
+        },
+        getUserThunk:(page)=>{
+            dispatch(getUserThunk(page))},
 
 
     }
