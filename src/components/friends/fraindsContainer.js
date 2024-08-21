@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {
     changeCurrentPageAC,
     changeLoadingAC,
-    followFraindsAC, followUnFollowAC,
+    followFraindsAC, followUnFollowAC, FollowUnFollowThunk,
     getFraindsAC, getUserThunk,
     unfollowFraindsAC
 } from "../../redux/frainds_reducer";
@@ -45,6 +45,9 @@ let mapDispatchToProps = (dispatch) =>{
         getUserThunk:(page)=>{
             dispatch(getUserThunk(page))},
 
+        FollowUnFollowThunk:(id) =>{
+            dispatch(FollowUnFollowThunk(id))
+        }
 
     }
 }

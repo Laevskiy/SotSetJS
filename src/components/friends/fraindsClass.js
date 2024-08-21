@@ -10,43 +10,30 @@ import {getUserThunk} from "../../redux/frainds_reducer";
 class FraindsClass extends Component {
 
     componentDidMount() {
-        // this.props.changeLoading()
-        // console.log(this.props.changeListUser)
-        // //axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${4}`,
-        //     //{withCredentials: true}).
-        // getUsers(this.props.currentPage).
-        // then(res => {
-        //     this.props.changeLoading()
-        //      this.props.getFrainds(res.data.items)
-        // })
         this.props.getUserThunk(this.props.currentPage)
     }
 
    onChangePage = (page)=>{
        this.props.changeCurrentPage(page)
-       this.props.changeLoading()
-       getUsers(page).then(res => {
-           this.props.changeLoading()
-           this.props.getFrainds(res.data.items)
-       })
-
+       this.props.getUserThunk(page)
    }
 
    serverFollow = (id) =>{
-       this.props.followUnFollow(true,id)
-       axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{},
-           { withCredentials: true,
-                    headers: {"API-KEY":"3a6c91f3-20a3-4e43-a773-5e4856b6062d"}
-           }).
-       then(res => {
-            if(res.data.resultCode == 0){
-                console.log("Положительный ответ от сервера ")
-                this.props.follow(id)
-
-            }
-           this.props.followUnFollow(false,id)
-
-       })
+       // this.props.followUnFollow(true,id)
+       // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{},
+       //     { withCredentials: true,
+       //              headers: {"API-KEY":"3a6c91f3-20a3-4e43-a773-5e4856b6062d"}
+       //     }).
+       // then(res => {
+       //      if(res.data.resultCode == 0){
+       //          console.log("Положительный ответ от сервера ")
+       //          this.props.follow(id)
+       //
+       //      }
+       //     this.props.followUnFollow(false,id)
+       //
+       // })
+       this.props.FollowUnFollowThunk(id)
    }
 
     serverUnFollow = (id) =>{
@@ -57,7 +44,7 @@ class FraindsClass extends Component {
             }).
         then(res => {
             if(res.data.resultCode == 0){
-                console.log("Положительный ответ от сервера ")
+
                 this.props.unfollow(id)
 
             }

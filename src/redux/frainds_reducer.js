@@ -1,4 +1,5 @@
-import {getUsers} from "../api/api";
+import {getUsers, postFoolow} from "../api/api";
+import axios from "axios";
 
 const FR_FOLLOW = "FR_FOLLOW"
 const FR_UNFOLLOW = "FR_UNFOLLOW"
@@ -126,5 +127,23 @@ export const getUserThunk =(currentPage) => {
         dispatch(changeLoadingAC())
         dispatch(getFraindsAC(res.data.items))
     });}
+}
+
+export const FollowUnFollowThunk =(id) => {
+    return (dispatch)=>{
+
+        dispatch(followUnFollowAC(true,id))
+
+        postFoolow(id)
+            .then(res => {
+            if(res.data.resultCode == 0){
+                console.log("Положительный ответ от сервера jdsjdjdj")
+                //this.props.follow(id)
+                dispatch(followFraindsAC(id))
+
+            }
+            dispatch(followUnFollowAC(false,id))
+        })
+}
 }
 export default fraindsReducer
