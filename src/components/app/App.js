@@ -9,6 +9,8 @@ import FraindsContainer from "../friends/fraindsContainer";
 import ProfileContainer from "../profile/profileContainer";
 import MyProfileContainer from "../myprofile/myProfileContainer";
 import HeaderContainer from "../headr/headerContainer";
+import Login from "../loging/Login";
+import LoginContainer from "../loging/loginContainer";
 
 
 function App(props) {
@@ -28,6 +30,7 @@ function App(props) {
                   {<Route path ='profile' element={<MyProfileContainer/>}/>}
                   {<Route path ='profile/:userID' element={<ProfileContainer/>}/>}
                   {<Route path ='/' element={<div>Главная страница</div>}/>}
+                  {<Route path ='login' element={<LoginContainer/>}/>}
                </Routes>
           </div>
           <div className="podval">Подвал</div>

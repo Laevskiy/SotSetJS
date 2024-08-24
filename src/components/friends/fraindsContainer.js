@@ -9,6 +9,7 @@ import {
     unfollowFraindsAC
 } from "../../redux/frainds_reducer";
 import FraindsClass from "./fraindsClass";
+import withAuthRedirect from "../../HOC/withAuthRedirect";
 
 
 
@@ -51,7 +52,7 @@ let mapDispatchToProps = (dispatch) =>{
 
     }
 }
-const FraindsContainer = connect(mapStateToProps,mapDispatchToProps)(FraindsClass)
+const FraindsContainer = connect(mapStateToProps,mapDispatchToProps)(withAuthRedirect(FraindsClass))
 
 
 export default FraindsContainer

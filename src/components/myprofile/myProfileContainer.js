@@ -4,6 +4,7 @@ import MyProfile from "./myProfile";
 import {Component} from "react";
 import axios from "axios";
 import {setMyProfileAC} from "../../redux/myprofile_reducer";
+import {Navigate} from "react-router-dom";
 
 
 class myProfileClass extends Component {
@@ -29,6 +30,7 @@ class myProfileClass extends Component {
 let mapStateToProps = (state) =>{
     return{
       myProfile: state.myprofile,
+
     }
 };
 
